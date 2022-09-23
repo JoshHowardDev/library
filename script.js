@@ -24,13 +24,16 @@ function initialLibrary() {
     addBookToLibrary('A Game of Thrones', 'George RR Martin', 694, true);
     addBookToLibrary('The Phantom Tollbooth', 'Norton Juster', 255, true);
 }
+
+function populateShelf() {
+    myLibrary.forEach(book => {
+        let bookCard = document.createElement('div');
+        bookCard.classList.add('book')
+        bookCard.textContent = book.title
+        bookShelf.appendChild(bookCard)
+    });
+}
+
+
 initialLibrary();
-
-console.log(myLibrary)
-
-myLibrary.forEach(book => {
-    let bookCard = document.createElement('div');
-    bookCard.classList.add('book')
-    bookCard.textContent = book.title
-    bookShelf.appendChild(bookCard)
-});
+populateShelf();

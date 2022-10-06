@@ -29,7 +29,7 @@ function populateShelf() {
     myLibrary.forEach(book => {
         let bookCard = document.createElement('div');
         bookCard.classList.add('book')
-        bookCard.textContent = book.title
+        bookCard.innerHTML = `<div class="bookTitle">${book.title}</div>`
         bookShelf.appendChild(bookCard)
     });
 }

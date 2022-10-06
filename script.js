@@ -25,7 +25,26 @@ function initialLibrary() {
     addBookToLibrary('The Phantom Tollbooth', 'Norton Juster', 255, true);
 }
 
+function changeReadStatus() {
+    if (confirm('Are you sure you want to change the read status for this book?')) {
+        myLibrary[this.attributes['data-libraryindex'].value].read = !myLibrary[this.attributes['data-libraryindex'].value].read
+        populateShelf();
+    }
+}
+
+function removeBook() {
+    if (confirm('Are you sure you want to remove this book from your library?')) {
+        myLibrary.splice(this.attributes['data-libraryindex'].value, 1)
+        populateShelf();
+    }
+}
+
 function populateShelf() {
+
+    //Clear shelf if existing books are present
+    bookShelf.innerHTML = '';
+
+    //Create and add book cards to shelf
     myLibrary.forEach((book, index) => {
 
         //Create book card
@@ -37,6 +56,7 @@ function populateShelf() {
         let changeReadBtn = document.createElement('button');
         changeReadBtn.setAttribute('type', 'button');
         changeReadBtn.classList.add('changeReadStatusButton');
+        changeReadBtn.setAttribute('data-libraryindex', index);
         changeReadBtn.innerHTML = 'Change Read Status'
         bookCard.appendChild(changeReadBtn);
 
@@ -60,11 +80,23 @@ function populateShelf() {
         let removeBtn = document.createElement('button');
         removeBtn.setAttribute('type', 'button');
         removeBtn.classList.add('removeBookButton');
+        removeBtn.setAttribute('data-libraryindex', index);
         removeBtn.innerHTML = 'Remove Book'
         bookCard.appendChild(removeBtn);        
 
         //Add book card to shelf
         bookShelf.appendChild(bookCard)
+    });
+
+    //Add event listeners for button clicks
+    const changeReadStatusButtons = document.querySelectorAll('.changeReadStatusButton');
+    changeReadStatusButtons.forEach(button => {
+        button.addEventListener('click', changeReadStatus)
+    });
+
+    const removeBookButtons = document.querySelectorAll('.removeBookButton');
+    removeBookButtons.forEach(button => {
+        button.addEventListener('click', removeBook)
     });
 }
 

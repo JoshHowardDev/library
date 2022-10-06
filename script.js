@@ -26,10 +26,44 @@ function initialLibrary() {
 }
 
 function populateShelf() {
-    myLibrary.forEach(book => {
+    myLibrary.forEach((book, index) => {
+
+        //Create book card
         let bookCard = document.createElement('div');
-        bookCard.classList.add('book')
-        bookCard.innerHTML = `<div class="bookTitle">${book.title}</div>`
+        bookCard.classList.add('book');
+        bookCard.setAttribute('data-libraryindex', index);
+
+        //Add a button to change read status
+        let changeReadBtn = document.createElement('button');
+        changeReadBtn.setAttribute('type', 'button');
+        changeReadBtn.classList.add('changeReadStatusButton');
+        changeReadBtn.innerHTML = 'Change Read Status'
+        bookCard.appendChild(changeReadBtn);
+
+        //Create full details div and add to book card.
+        let fullDetails = `Title: ${book.title}<br><br>
+                        Author: ${book.author}<br><br>
+                        Pages: ${book.pages}<br><br>
+                        Read: ${(book.read) ? 'Yes' : 'No'}`;
+        let fullDetailsDiv = document.createElement('div');
+        fullDetailsDiv.classList.add('fullBookDetails');
+        fullDetailsDiv.innerHTML = fullDetails;
+        bookCard.appendChild(fullDetailsDiv)
+
+        //Create title div and add to book card.
+        let bookTitleDiv = document.createElement('div');
+        bookTitleDiv.classList.add('bookTitle');
+        bookTitleDiv.innerHTML = book.title;
+        bookCard.appendChild(bookTitleDiv)        
+
+        //Add a button to remove the book
+        let removeBtn = document.createElement('button');
+        removeBtn.setAttribute('type', 'button');
+        removeBtn.classList.add('removeBookButton');
+        removeBtn.innerHTML = 'Remove Book'
+        bookCard.appendChild(removeBtn);        
+
+        //Add book card to shelf
         bookShelf.appendChild(bookCard)
     });
 }

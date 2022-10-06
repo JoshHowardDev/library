@@ -10,6 +10,12 @@
     padding: 30px;
 }
 
+.mainContentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .headerText {
     font-family: 'Nunito Sans', sans-serif;
     text-align: right;
@@ -84,4 +90,62 @@
     background-color: rgb(255, 44, 44);
     border-radius: 10px;
     border: 2px solid black;
+}
+
+.buttonsDiv {
+    display: flex;
+    place-content: center;
+    padding: 50px;
+}
+
+#addBookButton, #addBookForm, .newBookButtons button {
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255, 0.4);
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+#addBookButton {
+    padding: 15px;
+    font-size: 3rem;
+}
+
+.formPopup {
+    display: none;
+}
+
+#addBookForm {
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    margin: 50px;
+    padding: 30px;
+    font-size: 1.3rem;
+    gap: 2px;
+}
+
+#addBookForm input {
+    margin-bottom: 10px;
+}
+
+#addBookForm h2 {
+    text-align: center;
+    padding: 6px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+#addBookForm input {
+    font-size: 1.5rem;
+    padding: 5px;
+}
+
+.newBookButtons {
+    display: flex;
+    place-content: center space-around;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.newBookButtons button {
+    font-size: 1.5rem;
 }

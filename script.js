@@ -1,4 +1,10 @@
-bookShelf = document.querySelector('.shelf')
+const bookShelf = document.querySelector('.shelf');
+const newBookTitleInput = document.querySelector('#newBookTitle')
+const newBookAuthorInput = document.querySelector('#newBookAuthor')
+const newBookPagesInput = document.querySelector('#newBookPages')
+const newBookReadInput = document.querySelector('#newBookRead')
+const formPopup = document.querySelector('.formPopup')
+const buttonsDiv = document.querySelector('.buttonsDiv')
 
 let myLibrary = [];
 
@@ -37,6 +43,28 @@ function removeBook() {
         myLibrary.splice(this.attributes['data-libraryindex'].value, 1)
         populateShelf();
     }
+}
+
+function openAddABookForm() {
+    bookShelf.style.display = 'none';
+    buttonsDiv.style.display = 'none';
+    formPopup.style.display = 'unset';
+}
+
+function addBookSubmit() {
+    addBookToLibrary(newBookTitleInput.value, newBookAuthorInput.value, newBookPagesInput.value, newBookReadInput.checked);
+    closeAddABookForm();
+    populateShelf();
+}
+
+function closeAddABookForm() {
+    formPopup.style.display = 'none';
+    bookShelf.style.display = 'flex';
+    buttonsDiv.style.display = 'flex';
+    newBookTitleInput.value = '';
+    newBookAuthorInput.value = '';
+    newBookPagesInput.value = '';
+    newBookReadInput.checked = false;
 }
 
 function populateShelf() {

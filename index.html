@@ -17,13 +17,34 @@
         <div class="header">
             <h1 class="headerText">My Library</h1>
         </div>
-        <div class="bookShelfContainer">
-            <div class="shelf">
-        
+        <div class="mainContentContainer">
+            <div class="bookShelfContainer">
+                <div class="shelf">
+            
+                </div>
             </div>
-        </div>
-        <div class="buttonsDiv">
-            <button type="button" id="addBookButton"></button>
+            <div class="buttonsDiv">
+                <button type="button" id="addBookButton" onclick="openAddABookForm()">Add A Book</button>
+            </div>
+            <div class="formPopup">
+                <form id="addBookForm">
+                    <h2>New Book Details</h2>
+                    <label for="newBookTitle">Title</label>
+                    <input type="text" id="newBookTitle">
+                    <label for="newBookAuthor">Author</label>
+                    <input type="text" id="newBookAuthor">
+                    <label for="newBookPages">Number of Pages</label>
+                    <input type="number" id="newBookPages">
+                    <div class="newBookCheckboxDiv">
+                        <input type="checkbox" id="newBookRead" value="true">
+                        <label for="newBookRead">Read</label>
+                    </div>
+                    <div class="newBookButtons">
+                        <button type="button" id="submitNewBook" onclick="addBookSubmit()">Submit</button>
+                        <button type="button" id="cancelButton" onclick="closeAddABookForm()">Cancel</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </body>

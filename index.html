@@ -30,17 +30,17 @@
                 <form id="addBookForm">
                     <h2>New Book Details</h2>
                     <label for="newBookTitle">Title</label>
-                    <input type="text" id="newBookTitle">
+                    <input type="text" id="newBookTitle" required>
                     <label for="newBookAuthor">Author</label>
-                    <input type="text" id="newBookAuthor">
+                    <input type="text" id="newBookAuthor" required>
                     <label for="newBookPages">Number of Pages</label>
-                    <input type="number" id="newBookPages">
+                    <input type="number" id="newBookPages" min="50" max="1000" required>
                     <div class="newBookCheckboxDiv">
                         <input type="checkbox" id="newBookRead" value="true">
                         <label for="newBookRead">Read</label>
                     </div>
                     <div class="newBookButtons">
-                        <button type="button" id="submitNewBook" onclick="addBookSubmit()">Submit</button>
+                        <button type="submit" id="submitNewBook">Submit</button>
                         <button type="button" id="cancelButton" onclick="closeAddABookForm()">Cancel</button>
                     </div>
                 </form>

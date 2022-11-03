@@ -53,10 +53,11 @@ function openAddABookForm() {
     formPopup.style.display = 'unset';
 }
 
-function addBookSubmit() {
-    addBookToLibrary(newBookTitleInput.value, newBookAuthorInput.value, newBookPagesInput.value, newBookReadInput.checked);
-    closeAddABookForm();
-    populateShelf();
+function addBookSubmit(event) {
+  addBookToLibrary(newBookTitleInput.value, newBookAuthorInput.value, newBookPagesInput.value, newBookReadInput.checked);
+  closeAddABookForm();
+  populateShelf();
+  event.preventDefault();
 }
 
 function closeAddABookForm() {
@@ -130,6 +131,12 @@ function populateShelf() {
     });
 }
 
+function addSubmitFunction() {
+  addBookForm = document.querySelector('#addBookForm')
+  addBookForm.addEventListener('submit', addBookSubmit)
+}
+
 
 initialLibrary();
 populateShelf();
+addSubmitFunction()
